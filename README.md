@@ -1,5 +1,5 @@
 # Titulo principal
- Trabajo practico 4 referido a bucles de rolling code school
+ Trabajo practico 4 referido a objetos de rolling code school
 
 ## Librerias / herramientas 🛠
 
