@@ -14,11 +14,11 @@ const menu = () => {
     );
     switch (opcion) {
       case "1":
-        if (agenda.contactos.length < 10){
-        let contacto = crearContacto();
-        agenda.aniadirContacto(contacto);
-        } else{
-            alert("No se puede añadir mas contactos, la agenda está llena ");
+        if (agenda.contactos.length < 10) {
+          let contacto = crearContacto();
+          agenda.aniadirContacto(contacto);
+        } else {
+          alert("No se puede añadir mas contactos, la agenda está llena ");
         }
         break;
       case "2":
