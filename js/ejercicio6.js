@@ -10,9 +10,11 @@
 // Crear al menos 2 objetos libros y utilizar el método mostrarLibro();
 // Por último, indicar cuál de los 2 objetos “libros” tiene más páginas.
 
-const determinarMayorNumeroDePaginas = (libro1,libro2) =>{
-  return libro1.obtenerNumeroDePaginas >= libro2.obtenerNumeroDePaginas? `El libro ${libro1.obtenerTitulo} tiene mas paginas`: `El libro ${libro2.obtenerTitulo} tiene mas paginas`
-}
+const determinarMayorNumeroDePaginas = (libro1, libro2) => {
+  return libro1.obtenerNumeroDePaginas >= libro2.obtenerNumeroDePaginas
+    ? `El libro ${libro1.obtenerTitulo} tiene mas paginas`
+    : `El libro ${libro2.obtenerTitulo} tiene mas paginas`;
+};
 
 class Libro {
   constructor(isbn, titulo, autor, numeroDePaginas) {
@@ -67,7 +69,7 @@ let harryPotter = new Libro(
   640
 );
 
-harryPotter.mostrarLibro()
-elPrincipito.mostrarLibro()
+harryPotter.mostrarLibro();
+elPrincipito.mostrarLibro();
 
-console.log(determinarMayorNumeroDePaginas(elPrincipito,harryPotter))
+console.log(determinarMayorNumeroDePaginas(elPrincipito, harryPotter));

@@ -11,70 +11,70 @@
 // objetos aviones a diferentes destinos. Agregar los 3 aviones al aeropuerto, buscar
 // un avión y usar el método abordar.
 
-class Aeropuerto{
-    
-    constructor(nombreAeropuerto, listaDeAviones){
-        this._nombreAeropuerto = nombreAeropuerto
-        this._listaDeAviones = listaDeAviones
-    }
+class Aeropuerto {
+  constructor(nombreAeropuerto, listaDeAviones) {
+    this._nombreAeropuerto = nombreAeropuerto;
+    this._listaDeAviones = listaDeAviones;
+  }
 
-    agregarAvion(avion){
-        this._listaDeAviones.push(avion)
-    }
+  agregarAvion(avion) {
+    this._listaDeAviones.push(avion);
+  }
 
-    buscarAvion(nombre){
-        if(this._listaDeAviones.some(avion => avion.nombre === nombre)){
-          let avionEncontrado = this._listaDeAviones.find(avion => avion.nombre === nombre)
-          return avionEncontrado.mostrarInformacion()
-        } else{
-            return('El avion buscado no existe')
-        }
+  buscarAvion(nombre) {
+    if (this._listaDeAviones.some((avion) => avion.nombre === nombre)) {
+      let avionEncontrado = this._listaDeAviones.find(
+        (avion) => avion.nombre === nombre
+      );
+      return avionEncontrado.mostrarInformacion();
+    } else {
+      return "El avion buscado no existe";
     }
+  }
 }
 
-class Avion{
-    constructor(nombre, capacidad, destino, listaDePasajeros){
-       this._nombre=nombre
-       this._capacidad=capacidad
-       this._destino=destino
-       this._listaDePasajeros=listaDePasajeros
-        }
-    get nombre(){
-        return this._nombre
+class Avion {
+  constructor(nombre, capacidad, destino, listaDePasajeros) {
+    this._nombre = nombre;
+    this._capacidad = capacidad;
+    this._destino = destino;
+    this._listaDePasajeros = listaDePasajeros;
+  }
+  get nombre() {
+    return this._nombre;
+  }
+  get capacidad() {
+    return this._capacidad;
+  }
+  get destino() {
+    return this._destino;
+  }
+  get listaDePasajeros() {
+    return this._listaDePasajeros;
+  }
+
+  abordar(numeroDePasajeros) {
+    if (this._capacidad >= numeroDePasajeros) {
+      this._capacidad -= numeroDePasajeros;
+      return "Todos los pasajeros subieron a bordo!<br>";
+    } else {
+      return "No hay capacidad suficiente<br>";
     }
-    get capacidad(){
-        return this._capacidad
-    }
-    get destino(){
-        return this._destino
-    }
-    get listaDePasajeros(){
-        return this._listaDePasajeros
-    }
-        
-    abordar(numeroDePasajeros){       
-        
-        if (this._capacidad >= numeroDePasajeros){
-            this._capacidad -= numeroDePasajeros
-            return 'Todos los pasajeros subieron a bordo!<br>'
-        }else {
-            return  'No hay capacidad suficiente<br>'
-        }
-    }  
-   mostrarInformacion(){
-        return `Nombre del avion: ${this._nombre} <br> Capacidad: ${this._capacidad} pasajeros <br> Destino: ${this._destino}`
-    }  
+  }
+  mostrarInformacion() {
+    return `Nombre del avion: ${this._nombre} <br> Capacidad: ${this._capacidad} pasajeros <br> Destino: ${this._destino}`;
+  }
 }
 
-let boeing = new Avion('Boeing 737-800', 162, 'Miami', [] )
-let airbus = new Avion('Airbus A320', 150, 'Londres', []);
-let embraer = new Avion('Embraer E190', 100, 'Sao Paulo', []);
+let boeing = new Avion("Boeing 737-800", 162, "Miami", []);
+let airbus = new Avion("Airbus A320", 150, "Londres", []);
+let embraer = new Avion("Embraer E190", 100, "Sao Paulo", []);
 
-let aviones = [boeing,airbus,embraer]
+let aviones = [boeing, airbus, embraer];
 
-ezeiza = new Aeropuerto('Aeropuerto Internacional de Ezeiza', aviones)
+ezeiza = new Aeropuerto("Aeropuerto Internacional de Ezeiza", aviones);
 
-document.write(ezeiza.buscarAvion('Airbus A320'))
-document.write('<hr>')
-document.write(boeing.abordar(162))
-document.write(boeing.abordar(1))
+document.write(ezeiza.buscarAvion("Airbus A320"));
+document.write("<hr>");
+document.write(boeing.abordar(162));
+document.write(boeing.abordar(1));

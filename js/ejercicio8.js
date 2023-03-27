@@ -3,35 +3,35 @@
 // clase "Persona" con diferentes valores para sus propiedades y llama a sus métodos
 // "saludar" y "despedirse".
 class Persona {
-    constructor(nombre, edad, profesion) {
+  constructor(nombre, edad, profesion) {
     this.#nombre = nombre;
     this.#edad = edad;
     this.#profesion = profesion;
-    }
-    
-    get nombre() {
+  }
+
+  get nombre() {
     return this.#nombre;
-    }
-    
-    set nombre(nombre) {
+  }
+
+  set nombre(nombre) {
     this.#nombre = nombre;
-    }
-    
-    get edad() {
+  }
+
+  get edad() {
     return this.#edad;
-    }
-    
-    set edad(edad) {
+  }
+
+  set edad(edad) {
     this.#edad = edad;
-    }
-    
-    get profesion() {
+  }
+
+  get profesion() {
     return this.#profesion;
-    }
-    
-    set profesion(profesion) {
+  }
+
+  set profesion(profesion) {
     this.#profesion = profesion;
-    }
+  }
 
   saludar(nombre) {
     return `Hola don ${nombre}`;
