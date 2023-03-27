@@ -1,55 +1,68 @@
 const crearContacto = () => {
-    let nombre = prompt("escriba el nombre");
-    let telefono = prompt("escriba el telefono");
-    let contacto = new Contacto(nombre, telefono);
-    return contacto;
-  };
-  
-
-const menu = () => {
-  let opcion =''
- do {
-  opcion = prompt(
-    "Seleccione una opcion \n1-Agregar contacto \n2-Existe el contacto? \n3-Listar contactos \n4-Buscar un contacto \n5-Eliminar un contacto \n6-La agenda esta llena? \n7-Espacios libres en la agenda \n8-Salir"
-  );
-  switch (opcion) {
-    case '1':
-    let contacto = crearContacto()
-      agenda.aniadirContacto(contacto);
-      break;
-    case '2':
-      agenda.existeContacto(prompt("Escriba el nombre que quiere buscar"))
-        ? alert("Si existe el contacto")
-        : alert("No existe el contacto");
-      break;
-    case '3':
-      agenda.listarContactos();
-      break;
-    case '4':
-      let nombre = prompt("Escriba el nombre que quiere buscar");
-      document.write(
-        `Nombre: ${agenda.buscarContacto(nombre).obtenerNombre} Telefono: ${
-          agenda.buscarContacto(nombre).obtenerTelefono
-        }`
-      );
-      break;
-      default:
-        'OPCION INCORRECTA'
-        break
-  }
-}while(opcion != '8')
+  let nombre = prompt("escriba el nombre");
+  let telefono = prompt("escriba el telefono");
+  let contacto = new Contacto(nombre, telefono);
+  return contacto;
 };
 
+const menu = () => {
+  let opcion = "";
+  let nombre = "";
+  do {
+    opcion = prompt(
+      "Seleccione una opcion \n1-Agregar contacto \n2-Existe el contacto? \n3-Listar contactos \n4-Buscar un contacto \n5-Eliminar un contacto \n6-La agenda esta llena? \n7-Espacios libres en la agenda \n8-Salir"
+    );
+    switch (opcion) {
+      case "1":
+        if (agenda.contactos.length < 10){
+        let contacto = crearContacto();
+        agenda.aniadirContacto(contacto);
+        } else{
+            alert("No se puede añadir mas contactos, la agenda está llena ");
+        }
+        break;
+      case "2":
+        agenda.existeContacto(prompt("Escriba el nombre que quiere buscar"))
+          ? alert("Si existe el contacto")
+          : alert("No existe el contacto");
+        break;
+      case "3":
+        agenda.listarContactos();
+        break;
+      case "4":
+        nombre = prompt("Escriba el nombre que quiere buscar");
+        alert(
+          `Nombre: ${agenda.buscarContacto(nombre).obtenerNombre} Telefono: ${
+            agenda.buscarContacto(nombre).obtenerTelefono
+          }`
+        );
+        break;
+      case "5":
+        nombre = prompt("Escriba el nombre que quiere eliminar");
+        agenda.eliminarContacto(nombre);
+        break;
+      case "6":
+        alert(agenda.agendaLLena());
+        break;
+      case "7":
+        alert(`Huecos libres en la agenda: ${agenda.huecosLibres()}`);
+        break;
+
+      case "8":
+        alert("Hasta luego");
+        break;
+      default:
+        alert("OPCION INCORRECTA");
+        break;
+    }
+  } while (opcion != "8");
+};
 
 const agenda = {
   contactos: [],
 
   aniadirContacto(contacto) {
-    if (this.contactos < 10) {
-      this.contactos.push(contacto);
-    } else {
-      alert("No se puede añadir mas contactos, la agenda está llena ");
-    }
+    this.contactos.push(contacto);
   },
   existeContacto(nombre) {
     let bandera = false;
@@ -64,12 +77,12 @@ const agenda = {
     return bandera;
   },
   listarContactos() {
-    document.write(`<ul>`);
+    lista = "";
     for (contacto of this.contactos) {
-      document.write(`<li>
-            Nombre: ${contacto.obtenerNombre}  Telefono: ${contacto.obtenerTelefono}<li>`);
+      lista += `
+          -  Nombre: ${contacto.obtenerNombre}  Telefono: ${contacto.obtenerTelefono}\n`;
     }
-    document.write(`</ul>`);
+    alert(lista);
   },
   buscarContacto(nombre) {
     if (this.existeContacto(nombre)) {
