@@ -1,3 +1,15 @@
+// 6- Crear una clase Libro que contenga al menos las siguientes propiedades:
+// ● ISBN
+// ● Título
+// ● Autor
+// ● Número de páginas
+// Crear sus respectivos métodos get y set correspondientes para cada propiedad.
+// Crear el método mostrarLibro() para mostrar la información relativa al libro con el
+// siguiente formato:
+// “El libro xxx con ISBN xxx creado por el autor xxx tiene páginas xxx”
+// Crear al menos 2 objetos libros y utilizar el método mostrarLibro();
+// Por último, indicar cuál de los 2 objetos “libros” tiene más páginas.
+
 const determinarMayorNumeroDePaginas = (libro1,libro2) =>{
   return libro1.obtenerNumeroDePaginas >= libro2.obtenerNumeroDePaginas? `El libro ${libro1.obtenerTitulo} tiene mas paginas`: `El libro ${libro2.obtenerTitulo} tiene mas paginas`
 }
